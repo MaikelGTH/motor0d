@@ -6,6 +6,8 @@ El punto central es el **control de la autoignición del HCCI**. El inicio de co
 
 **[Simulador interactivo →](https://maikelgth.github.io/motores-termicos/comparativa-mep-mec-hcci/)** Mismo modelo portado a JavaScript; funciona en el navegador.
 
+**[Informe técnico →](INFORME.md)** Cómo queman los tres motores, qué los limita y las hipótesis planteadas, con su respuesta.
+
 ![Ciclo de referencia](figs/ciclo_referencia.png)
 
 ## Resultados
@@ -15,12 +17,12 @@ Punto de referencia: 40 % de carga, 2500 rpm.
 | Motor | Modo | λ | T IVC [K] | CA50 [°] | IMEP neta [bar] | η ind. [%] | p máx [bar] | dp/dθ máx [bar/°] | NOx (rel.) |
 |---|---|---|---|---|---|---|---|---|---|
 | MEP | Chispa, mariposa | 1.00 | 320 | +3.9 | 4.07 | 33.3 | 25.6 | 1.09 | 1.000 |
-| MEC | Difusión | 3.38 | 330 | +3.9 | 4.33 | 49.0 | 61.1 | 4.46 | 0.304 |
-| HCCI | Autoignición | 2.50 | 461 | +6.0 | 3.52 | 43.8 | 48.3 | 3.74 | 0.011 |
+| MEC | Difusión | 3.38 | 330 | +3.9 | 4.33 | 49.0 | 61.1 | 4.46 | 0.43 |
+| HCCI | Autoignición | 2.50 | 461 | +6.0 | 3.52 | 43.8 | 48.3 | 3.74 | 0.0005 |
 
 - **MEP**: el estrangulamiento hunde el rendimiento a carga parcial (bombeo). Es el motivo de fondo para buscar alternativas pobres.
 - **MEC**: es el más eficiente, pero su llama de difusión arde a λ local ≈ 1, así que genera NOx aunque la mezcla global sea muy pobre.
-- **HCCI**: rendimiento cercano al diésel con un NOx unas 90 veces menor que el MEP. A cambio, su ventana útil acaba en λ ≈ 2 (≈ 50 % de carga) por el gradiente de presión (*ringing*) y exige un control preciso de la temperatura de la carga.
+- **HCCI**: rendimiento cercano al diésel con un NOx unas 2000 veces menor que el MEP (índice cualitativo: indica el orden de magnitud, no un valor medido). A cambio, su ventana útil acaba en λ ≈ 2 (≈ 50 % de carga) por el gradiente de presión (*ringing*) y exige un control preciso de la temperatura de la carga.
 
 ### Barrido de carga
 

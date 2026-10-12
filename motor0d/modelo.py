@@ -248,7 +248,9 @@ def ciclo(mot: Motor, carga: float, n: float, *, geo: Geometria = GEO,
     Tb = Tu + mot.eta_comb * mot.LHV / ((1 + lam_fl * mot.AFR_st) * 1450)  # sin disociación
     Tb = np.where(xb >= 0.01, Tb, np.nan)
     x_o2b = max(0.21 * (lam_fl - 1) / lam_fl, 0.01)       # suelo ~ O2 por disociación
-    tasa = (lam_fl / lam) * xb * np.exp(-38370 / np.nan_to_num(Tb, nan=1.0)) * np.sqrt(x_o2b)
+    Tb_ = np.nan_to_num(Tb, nan=1.0)
+    # Zeldovich con [O] en equilibrio (Heywood, ec. 11.8): d[NO]/dt ∝ T^-1/2·exp(-69090/T)·[O2]^1/2
+    tasa = (lam_fl / lam) * xb * Tb_**-0.5 * np.exp(-69090 / Tb_) * np.sqrt(x_o2b)
     nox = float(np.trapezoid(tasa, th) / (6 * n))
 
     return Resultado(

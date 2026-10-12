@@ -28,7 +28,7 @@ def tabla_referencia(ref, carga, n):
         ca50 = f"{r.ca50:+.1f}" if r.ca50 is not None else "–"
         filas.append(f"| {r.motor} | {r.modo} | {r.lam:.2f} | {r.T_ivc:.0f} | {ca50} | "
                      f"{r.imep_n/1e5:.2f} | {r.eta_i*100:.1f} | {r.pmax/1e5:.1f} | "
-                     f"{r.dpmax/1e5:.2f} | {r.Tmax:.0f} | {r.nox/nox_mep:.3f} |")
+                     f"{r.dpmax/1e5:.2f} | {r.Tmax:.0f} | {r.nox/nox_mep:.3g} |")
     return "\n".join(filas)
 
 
